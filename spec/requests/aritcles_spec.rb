@@ -10,12 +10,13 @@ RSpec.describe ArticlesController do
 
     it "returns proper JSON" do
       article = create(:article)
-      body = JSON.parse(response.body)
+      get '/articles'
+      body = JSON.parse(response.body).deep_symbolize_keys
       expect(body).to eq(
         data: [
           {
             type: "article",
-            id: 1,
+            id: article.id.to_s,
             attributes: {
               title: article.title,
               content: article.content,
