@@ -32,6 +32,19 @@ RSpec.describe ArticlesController do
       expect(ids).to eq([recent_article.id, older_article.id])  
     end
     
+    it "pagination results" do
+      article1, article2, article3 = create_list(:article, 3)
+      get '/articles', params: { page: { number: 2, size: 1}}
+      expect(json_data.length).to eq(1)
+      expect(json_data.first[:id]).to eq([article2.id])    
+    end
+    
+    it "pagination results" do
+      article1, article2, article3 = create_list(:article, 3)
+      get '/articles', params: { page: { number: 2, size: 1}}
+      expect(json['links'].length).to eq(5)
+      expect(json['links'].keys).to contain_exactly('first', 'prev', 'next', 'last', 'self')    
+    end
   end  
 end
 
