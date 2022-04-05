@@ -36,7 +36,7 @@ RSpec.describe ArticlesController do
       article1, article2, article3 = create_list(:article, 3)
       get '/articles', params: { page: { number: 2, size: 1}}
       expect(json_data.length).to eq(1)
-      expect(json_data.first[:id]).to eq([article2.id])    
+      expect(json_data.first[:id]).to eq(article2.id)    
     end
     
     it "pagination results" do
