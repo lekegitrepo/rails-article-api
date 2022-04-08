@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
       base_url: request.url
     )
     
-    # binding.pry
+    binding.pry
     
     render json: ArticleSerializer.new(articles), status: :ok
   end

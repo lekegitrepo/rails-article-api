@@ -214,7 +214,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
-  byebug
   factory_bot_rails
   jsom-pagination
   jsonapi-serializer
