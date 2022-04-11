@@ -7,9 +7,9 @@ class ArticlesController < ApplicationController
       base_url: request.url
     )
     
-    binding.pry
+    options = { meta: paginated.meta.to_h, links: paginated.links.to_h }
     
-    render json: ArticleSerializer.new(articles), status: :ok
+    render json: ArticleSerializer.new(paginated.items, options), status: :ok
   end
 
   def show
