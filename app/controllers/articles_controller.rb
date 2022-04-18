@@ -7,8 +7,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    article = Article.find_by(id: params[:id])
-    render json: serializer.new(article), status: :ok   
+    article = Article.find(id: params[:id])
+    render json: serializer.new(article), status: :ok
   end
 
   private
