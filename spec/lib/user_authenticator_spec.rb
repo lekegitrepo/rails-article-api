@@ -23,9 +23,21 @@ RSpec.describe UserAuthenticator do
     end
 
     context "when the code is valid/correct" do
+      let(:user_data) do
+        {
+          login: 'jdoe131',
+          avatar_url: 'http://example.com/avatar_url',
+          url: 'http://example.com',
+          name: 'John Doe'
+        }
+      end
+
       before do
         allow_any_instance_of(Octokit::Client).to receive(
-          :exchange_code_for_token).and_return(error)
+          :exchange_code_for_token).and_return('validaccesstoken')
+
+        allow_any_instance_of(Octokit::Client).to receive(
+            :exchange_code_for_token).and_return(user_data)
       end
 
       it "should save new user" do
