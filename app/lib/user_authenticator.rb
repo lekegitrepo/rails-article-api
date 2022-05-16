@@ -3,6 +3,7 @@ class UserAuthenticator
   class AuthenticationError < StandardError; end
 
   attr_reader :user
+
   def initialize(code)
     @code = code
   end
