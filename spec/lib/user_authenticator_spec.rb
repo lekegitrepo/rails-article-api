@@ -26,8 +26,8 @@ RSpec.describe UserAuthenticator do
       let(:user_data) do
         {
           login: 'jdoe131',
-          avatar_url: 'http://example.com/avatar_url',
-          url: 'http://example.com',
+          avatar_url: 'http://article.com/avatar_url',
+          url: 'http://article.com',
           name: 'John Doe'
         }
       end
