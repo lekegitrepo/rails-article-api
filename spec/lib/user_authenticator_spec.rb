@@ -42,6 +42,7 @@ RSpec.describe UserAuthenticator do
 
       it "should save new user" do
         expect{ subject }.to change { User.count }.by(1)
+        expect(User.last.name).to eq('John Doe')
       end
       
     end
