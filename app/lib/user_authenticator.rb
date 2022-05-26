@@ -10,9 +10,10 @@ class UserAuthenticator
 
   def perform
     client = Octokit::Client.new(
-      client_id: ENV['GITHUB_CLIENT_ID'],
-      client_secret: ENV['GITHUB_CLIENT_SECRET']
+      client_id: Rails.application.credentials.github[:client_id],
+      client_secret: Rails.application.credentials.github[:client_secret]
     )
+    # client.user(ENV['GITHUB_CLIENT_SECRET'], :headers => { "X-GitHub-OTP" => "2fa-token"})
     token = client.exchange_code_for_token(code)
     if token.try(:error).present?
       raise AuthenticationError 
